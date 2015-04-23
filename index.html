@@ -189,17 +189,11 @@
                     var duration = +newDate - startPos.time;
                     if(Number(duration) > 100) {
                         if(endPos.y > 50) {
-                            $(".current").css("animationName", "currentUp").removeClass("current").addClass("previous");
-                            $(".next").eq(0).css("animationName", "up").removeClass("next").addClass("current");
-                            setTimeout(function() {
-                                isFinsh = true;
-                            }, 1000);
+                            $(".current").css("background-color", "#fff");
+                            
                         } else if(endPos.y < -50) {
-                            $(".current").css("animationName", "currentDown").removeClass("current").addClass("next");
-                            $(".previous").eq($(".previous").length - 1).css("animationName", "down").removeClass("previous").addClass("current");
-                            setTimeout(function() {
-                                isFinsh = true;
-                            }, 1000);
+                            $(".current").css("background-color", "#000");
+                            
                         }
                     }
 
