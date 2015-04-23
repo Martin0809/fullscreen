@@ -228,14 +228,24 @@
                 
                 if (endY > 50) {
                     if($(".previous").length > 0) {
+                        $(".next").eq(0).css("top", height + "px");
                         $(".current").css("top", "100%").removeClass("current").addClass("next");
                         $(".previous").eq($(".previous").length - 1).css("top", "0").removeClass("previous").addClass("current");
+                    } else {
+                        $(".previous").eq($(".previous").length - 1).css("top", - height + "px");
+                        $(".current").css("top", "0");
+                        $(".next").eq(0).css("top", height + "px");
                     }
                     
                 } else if(endY < -50) {
                     if($(".next").length > 0) {
+                        $(".previous").eq($(".previous").length - 1).css("top", - height + "px");
                         $(".current").css("top", "-100%").removeClass("current").addClass("previous");
                         $(".next").eq(0).css("top", "0").removeClass("next").addClass("current");
+                    } else {
+                        $(".previous").eq($(".previous").length - 1).css("top", - height + "px");
+                        $(".current").css("top", "0");
+                        $(".next").eq(0).css("top", height + "px");
                     }
                     
                 } else {
