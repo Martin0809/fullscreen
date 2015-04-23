@@ -196,6 +196,7 @@
         window.onmousewheel=document.onmousewheel=scrollFunc;//IE/Opera/Chrome
 
         var section = document.getElementsByTagName("section");
+        var height = $("section").height();
         var startX;
         var startY;
         var startTime;
@@ -218,9 +219,9 @@
                 endX = touch.pageX - startX;
                 endY = touch.pageY - startY;
 
-                $(".previous").eq($(".previous").length - 1).css("top", endY + "px");
+                $(".previous").eq($(".previous").length - 1).css("top", - height + endY + "px");
                 $(".current").css("top", endY + "px");
-                $(".next").eq(0).css("top", endY + "px");
+                $(".next").eq(0).css("top", height + endY + "px");
 
             }, false);
             section[i].addEventListener("touchend", function(event) {
@@ -238,9 +239,9 @@
                     }
                     
                 } else {
-                    $(".previous").eq($(".previous").length - 1).css("top", "-100%");
+                    $(".previous").eq($(".previous").length - 1).css("top", - height + "px");
                     $(".current").css("top", "0");
-                    $(".next").eq(0).css("top", "100%");
+                    $(".next").eq(0).css("top", height + "px");
                 }
             }, false);
         }
