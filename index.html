@@ -170,16 +170,13 @@
             endy = touch.pageY - startY;
         }, false);
         section.addEventListener("touchend", function(event) {
-            $(".current").css("background-color", "#fff");
-            var duration = +new Date - startTime;
-                if (Number(duration) > 100) {
-                    // 判断是左移还是右移，当偏移量大于50时执行
-                    if (endY > 50) {
-                        $(".current").css("background-color", "#fff");
-                    } else if(endY < -50) {
-                        $(".current").css("background-color", "#000");
-                    }
-                }
+            
+            if (endY > 50) {
+                $(".current").css("background-color", "#fff");
+            } else if(endY < -50) {
+                $(".current").css("background-color", "#000");
+            }
+                
         }, false);
         
     </script>
