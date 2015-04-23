@@ -147,7 +147,7 @@
         }//W3C
         window.onmousewheel=document.onmousewheel=scrollFunc;//IE/Opera/Chrome
 
-        var section = document.getElementsByClassName("second")[0];
+        var section = $(".current").eq(0);
         //触屏事件
         var sectionEvent = {
             touch: ('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch,
