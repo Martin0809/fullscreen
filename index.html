@@ -223,7 +223,10 @@
 
             }, false);
             section[i].addEventListener("touchend", function(event) {
-                $("secion").css("transition", ".3s linear");
+                $("secion").css({
+                    "transition": "top .3s",
+                    "webkitTransition": "top .3s"
+                });
                 if (endY > 50) {
                     if($(".previous").length > 0) {
                         $(".next").eq(0).css("top", height + "px");
