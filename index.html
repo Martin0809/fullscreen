@@ -148,67 +148,37 @@
         window.onmousewheel=document.onmousewheel=scrollFunc;//IE/Opera/Chrome
 
         var section = document.getElementsByClassName("current")[0];
+        var startX;
+        var startY;
+        var startTime;
+        var endX;
+        var endY;
         //触屏事件
-        var sectionEvent = {
-            touch: ('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch,
-            events: {
-                handleEvent: function(event) {
-                    var self = this;
-                    if(event.type == "touchstart") self.start(event);
-                    else if(event.type == "touchmove") self.move(event);
-                    else if(event.type == "touchend") self.end(event);
-                },
-                //滑动开始
-                start: function(event) {
-                    event.preventDefault();
-                    var touch = event.touches[0];
-                    startPos = {
-                        x: touch.pageX,
-                        y: touch.pageY,
-                        time: +new Date
-                    }
-                    //绑定事件
-                    section.addEventListener("touchmove", self.move(event), false);
-                    section.addEventListener("touchend", self.end(event), false);
-                },
-
-                //移动
-                move: function(event) {
-                    event.preventDefault();
-                    //当屏幕有多个touch或者页面缩放时，不执行操作
-                    if(event.touches.length > 1 || event.scale && event.scale !== 1) return;
-                    var touch = event.touches[0];
-                    endPos = {
-                        x: touch.pageX - startPos.x,
-                        y: touch.pageY - startPos.y
-                    }
-                },
-
-                //滑动释放
-                end: function(event) {
-                    var duration = +newDate - startPos.time;
-                    if(Number(duration) > 100) {
-                        if(endPos.y > 50) {
+        section.addEventListener("touchstart", function(event) {
+            event.preventDefault();
+            var touch = event.touches[0];
+            startX = touch.pageX;
+            starty = touch.pageY;
+            startTime = +new Date;
+            section.addEventListener("touchmove", function(event) {
+                event.preventDefault();
+                if (event.touches.length > 1 || event.scale && event.scale !== 1) return;
+                var touch = touches[0];
+                endX = touch.pageX - startX;
+                endy = touch.pageY - startY;
+            }, false);
+            section.addEventListener("touchend", function(event) {
+                var duration = +new Date - startTime;
+                    if (Number(duration) > 100) {
+                        // 判断是左移还是右移，当偏移量大于50时执行
+                        if (endY > 50) {
                             $(".current").css("background-color", "#fff");
-                            
-                        } else if(endPos.y < -50) {
+                        } else if(endY < -50) {
                             $(".current").css("background-color", "#000");
-                            
                         }
                     }
-
-
-                    this.section.removeEventListener("touchmove", this, false);
-                    this.section.removeEventListener("touchend", this, false);
-                } 
-            },
-
-            init: function() {
-                var self = this;
-                if(!!self.touch) section.addEventListener("touchstart", self.events, false);
-            }
-        };
-        sectionEvent.init();
+            }, false);
+        }, false);
 
         
     </script>
