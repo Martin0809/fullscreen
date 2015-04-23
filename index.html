@@ -160,26 +160,26 @@
             startX = touch.pageX;
             starty = touch.pageY;
             startTime = +new Date;
-            section.addEventListener("touchmove", function(event) {
-                event.preventDefault();
-                if (event.touches.length > 1 || event.scale && event.scale !== 1) return;
-                var touch = touches[0];
-                endX = touch.pageX - startX;
-                endy = touch.pageY - startY;
-            }, false);
-            section.addEventListener("touchend", function(event) {
-                var duration = +new Date - startTime;
-                    if (Number(duration) > 100) {
-                        // 判断是左移还是右移，当偏移量大于50时执行
-                        if (endY > 50) {
-                            $(".current").css("background-color", "#fff");
-                        } else if(endY < -50) {
-                            $(".current").css("background-color", "#000");
-                        }
-                    }
-            }, false);
+            
         }, false);
-
+        section.addEventListener("touchmove", function(event) {
+            event.preventDefault();
+            if (event.touches.length > 1 || event.scale && event.scale !== 1) return;
+            var touch = touches[0];
+            endX = touch.pageX - startX;
+            endy = touch.pageY - startY;
+        }, false);
+        section.addEventListener("touchend", function(event) {
+            var duration = +new Date - startTime;
+                if (Number(duration) > 100) {
+                    // 判断是左移还是右移，当偏移量大于50时执行
+                    if (endY > 50) {
+                        $(".current").css("background-color", "#fff");
+                    } else if(endY < -50) {
+                        $(".current").css("background-color", "#000");
+                    }
+                }
+        }, false);
         
     </script>
 </body>
