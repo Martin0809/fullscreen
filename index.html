@@ -153,7 +153,7 @@
                     startPos = {
                         x: touch.pageX,
                         y: touch.pageY,
-                        time: + new Date
+                        time: +new Date
                     }
                     //绑定事件
                     this.section.addEventListener("touchmove", this, false);
@@ -174,7 +174,7 @@
 
                 //滑动释放
                 end: function(event) {
-                    var duration = + newDate - startPos.time;
+                    var duration = +newDate - startPos.time;
 
                     this.section.removeEventListener("touchmove", this, false);
                     this.section.removeEventListener("touchend", this, false);
