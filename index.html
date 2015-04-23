@@ -171,6 +171,14 @@
                         y: touch.pageY - startPos.y
                     }
                 },
+
+                //滑动释放
+                end: function(event) {
+                    var duration = + newDate - startPos.time;
+
+                    this.section.removeEventListener("touchmove", this, false);
+                    this.section.removeEventListener("touchend", this, false);
+                } 
             },
 
             init: function() {
