@@ -215,27 +215,34 @@
                 var touch = event.targetTouches[0];
                 endX = touch.pageX - startX;
                 endY = touch.pageY - startY;
+
             }, false);
             section[i].addEventListener("touchend", function(event) {
                 
                 if (endY > 50) {
-                    $(".current").css({
-                        "animationName": "currentDown",
-                        "webkitAnimationName": "currentDown"
-                    }).removeClass("current").addClass("next");
-                    $(".previous").eq($(".previous").length - 1).css({
-                        "animationName": "down",
-                        "webkitAnimationName": "down"
-                    }).removeClass("previous").addClass("current");
+                    if($(".previous").length > 0) {
+                        $(".current").css({
+                            "animationName": "currentDown",
+                            "webkitAnimationName": "currentDown"
+                        }).removeClass("current").addClass("next");
+                        $(".previous").eq($(".previous").length - 1).css({
+                            "animationName": "down",
+                            "webkitAnimationName": "down"
+                        }).removeClass("previous").addClass("current");
+                    }
+                    
                 } else if(endY < -50) {
-                    $(".current").css({
-                        "animationName": "currentUp",
-                        "webkitAnimationName": "currentUp"
-                    }).removeClass("current").addClass("previous");
-                    $(".next").eq(0).css({
-                        "animationName": "up",
-                        "webkitAnimationName": "up"
-                    }).removeClass("next").addClass("current");
+                    if($(".next").length > 0) {
+                        $(".current").css({
+                            "animationName": "currentUp",
+                            "webkitAnimationName": "currentUp"
+                        }).removeClass("current").addClass("previous");
+                        $(".next").eq(0).css({
+                            "animationName": "up",
+                            "webkitAnimationName": "up"
+                        }).removeClass("next").addClass("current");
+                    }
+                    
                 }   
             }, false);
         }
