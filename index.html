@@ -147,38 +147,41 @@
         }//W3C
         window.onmousewheel=document.onmousewheel=scrollFunc;//IE/Opera/Chrome
 
-        var section = document.getElementsByClassName("current")[0];
+        var section = document.getElementsByTagName("section");
         var startX;
         var startY;
         var startTime;
         var endX;
         var endY;
         //触屏事件
-        section.addEventListener("touchstart", function(event) {
-            event.preventDefault();
-            var touch = event.targetTouches[0];
-            startX = touch.pageX;
-            startY = touch.pageY;
-            startTime = +new Date;
-            
-        }, false);
-        section.addEventListener("touchmove", function(event) {
-            event.preventDefault();
-            if (event.targetTouches.length > 1 || event.scale && event.scale !== 1) return;
-            var touch = event.targetTouches[0];
-            endX = touch.pageX - startX;
-            endY = touch.pageY - startY;
-        }, false);
-        section.addEventListener("touchend", function(event) {
-            
-            if (endY > 50) {
-                $(".current").css("animationName", "currentDown").removeClass("current").addClass("next");
-                $(".previous").eq($(".previous").length - 1).css("animationName", "down").removeClass("previous").addClass("current");
-            } else if(endY < -50) {
-                $(".current").css("animationName", "currentUp").removeClass("current").addClass("previous");
-                $(".next").eq(0).css("animationName", "up").removeClass("next").addClass("current");
-            }   
-        }, false);
+        for(var i = 0; i < section.length; i++) {
+            section[i].addEventListener("touchstart", function(event) {
+                event.preventDefault();
+                var touch = event.targetTouches[0];
+                startX = touch.pageX;
+                startY = touch.pageY;
+                startTime = +new Date;
+                
+            }, false);
+            section[i].addEventListener("touchmove", function(event) {
+                event.preventDefault();
+                if (event.targetTouches.length > 1 || event.scale && event.scale !== 1) return;
+                var touch = event.targetTouches[0];
+                endX = touch.pageX - startX;
+                endY = touch.pageY - startY;
+            }, false);
+            section[i].addEventListener("touchend", function(event) {
+                
+                if (endY > 50) {
+                    $(".current").css("animationName", "currentDown").removeClass("current").addClass("next");
+                    $(".previous").eq($(".previous").length - 1).css("animationName", "down").removeClass("previous").addClass("current");
+                } else if(endY < -50) {
+                    $(".current").css("animationName", "currentUp").removeClass("current").addClass("previous");
+                    $(".next").eq(0).css("animationName", "up").removeClass("next").addClass("current");
+                }   
+            }, false);
+        }
+        
         
     </script>
 </body>
