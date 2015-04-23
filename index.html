@@ -138,7 +138,9 @@
         var sectionEvent = {
             section: $("section").eq(1),
             events: {
+                section: this.section;
                 handleEvent: function(e) {
+                    var self = this;
                     if(e.type == "touchstart") this.start(e);
                     else if(e.type == "touchmove") this.move(e);
                     else if(e.type == "touchend") this.end(e);
@@ -171,7 +173,7 @@
             },
 
             innt: function() {
-                if(!!this.touch) this.section.addEventListener("touchstart", this.events, false);
+                if(!!self.touch) self.section.addEventListener("touchstart", self.events, false);
             }
         };
         sectionEvent.innt();
