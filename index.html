@@ -218,7 +218,10 @@
                 endX = touch.pageX - startX;
                 endY = touch.pageY - startY;
 
+                $(".previous").eq($(".previous").length - 1).css("top", endY + "px");
                 $(".current").css("top", endY + "px");
+                $(".next").eq(0).css("top", endY + "px");
+
             }, false);
             section[i].addEventListener("touchend", function(event) {
                 
@@ -235,7 +238,9 @@
                     }
                     
                 } else {
+                    $(".previous").eq($(".previous").length - 1).css("top", "0");
                     $(".current").css("top", "0");
+                    $(".next").eq(0).css("top", "0");
                 }
             }, false);
         }
