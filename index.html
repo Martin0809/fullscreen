@@ -175,6 +175,22 @@
                 //滑动释放
                 end: function(event) {
                     var duration = +newDate - startPos.time;
+                    if(Number(duration) > 100) {
+                        if(endPos.y > 50) {
+                            $(".current").css("animationName", "currentUp").removeClass("current").addClass("previous");
+                            $(".next").eq(0).css("animationName", "up").removeClass("next").addClass("current");
+                            setTimeout(function() {
+                                isFinsh = true;
+                            }, 1000);
+                        } else if(endPos.y < -50) {
+                            $(".current").css("animationName", "currentDown").removeClass("current").addClass("next");
+                            $(".previous").eq($(".previous").length - 1).css("animationName", "down").removeClass("previous").addClass("current");
+                            setTimeout(function() {
+                                isFinsh = true;
+                            }, 1000);
+                        }
+                    }
+
 
                     this.section.removeEventListener("touchmove", this, false);
                     this.section.removeEventListener("touchend", this, false);
