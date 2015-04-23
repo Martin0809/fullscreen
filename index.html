@@ -128,12 +128,53 @@
             }
         }
         
-
         /*注册事件*/
         if(document.addEventListener){
             document.addEventListener('DOMMouseScroll',scrollFunc,false);
         }//W3C
         window.onmousewheel=document.onmousewheel=scrollFunc;//IE/Opera/Chrome
+
+        //触屏事件
+        var sectionEvent = {
+            section: $("section"),
+            events: {
+                handleEvent: function(e) {
+                    if(e.type == "touchstart") this.start(e);
+                    else if(e.type == "touchmove") this.move(e);
+                    else if(e.type == "touchend") this.end(e);
+                }
+            },
+
+            //滑动开始
+            start: function(e) {
+                e.preventDefault();
+                var touch = e.touches[0];
+                startPos = {
+                    x: touch.pageX,
+                    y: touch.pageY,
+                    time: + new Date
+                }
+                //绑定事件
+
+            },
+
+            //移动
+            move: function(e) {
+                event.preventDefault();
+                //当屏幕有多个touch或者页面缩放时，不执行操作
+                if(e.touches.length > 1 || e.scale && e.scale !== 1) return;
+                var touch = e.touches[0];
+                endPos: {
+                    x: touch.pageX - startPos.X,
+                    y: touch.pageY - startPos.y
+                }
+            },
+
+            innt: function() {
+                if(!!this.touch) this.section.addEventListener("touchstart", this.events, false);
+            }
+        };
+        sectionEvent.innt();
     </script>
 </body>
 </html>
