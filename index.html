@@ -178,12 +178,11 @@
         }//W3C
         window.onmousewheel=document.onmousewheel=scrollFunc;//IE/Opera/Chrome
 
+        var section = document.getElementsByClassName("second")[0];
         //触屏事件
-        /*var sectionEvent = {
+        var sectionEvent = {
             touch: ('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch,
-            section: document.getElementsByTagName("section")[1],
             events: {
-                section: this.section;
                 handleEvent: function(event) {
                     var self = this;
                     if(event.type == "touchstart") self.start(event);
@@ -200,8 +199,8 @@
                         time: +new Date
                     }
                     //绑定事件
-                    this.section.addEventListener("touchmove", this, false);
-                    this.section.addEventListener("touchend", this, false);
+                    section.addEventListener("touchmove", this, false);
+                    section.addEventListener("touchend", this, false);
                 },
 
                 //移动
@@ -210,7 +209,7 @@
                     //当屏幕有多个touch或者页面缩放时，不执行操作
                     if(event.touches.length > 1 || event.scale && event.scale !== 1) return;
                     var touch = event.touches[0];
-                    endPos: {
+                    endPos = {
                         x: touch.pageX - startPos.X,
                         y: touch.pageY - startPos.y
                     }
@@ -243,10 +242,10 @@
 
             init: function() {
                 var self = this;
-                if(!!self.touch) self.section.addEventListener("touchstart", self.events, false);
+                if(!!self.touch) section.addEventListener("touchstart", self.events, false);
             }
         };
-        sectionEvent.init();*/
+        sectionEvent.init();
 
         var slider = {
             // 判断设备是否支持touch事件
