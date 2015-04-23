@@ -170,7 +170,7 @@
             endY = touch.pageY - startY;
         }, false);
         section.addEventListener("touchend", function(event) {
-            $(".current").css("background-color", "#fff");
+            $(".current").css("background-color", "red");
             if (endY > 50) {
                 $(".current").css("background-color", "#fff");
             } else if(endY < -50) {
