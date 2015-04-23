@@ -224,29 +224,19 @@
                 
                 if (endY > 50) {
                     if($(".previous").length > 0) {
-                        $(".current").css({
-                            "animationName": "currentDown",
-                            "webkitAnimationName": "currentDown"
-                        }).removeClass("current").addClass("next");
-                        $(".previous").eq($(".previous").length - 1).css({
-                            "animationName": "down",
-                            "webkitAnimationName": "down"
-                        }).removeClass("previous").addClass("current");
+                        $(".current").css("top", "100%").removeClass("current").addClass("next");
+                        $(".previous").eq($(".previous").length - 1).css("top", "0").removeClass("previous").addClass("current");
                     }
                     
                 } else if(endY < -50) {
                     if($(".next").length > 0) {
-                        $(".current").css({
-                            "animationName": "currentUp",
-                            "webkitAnimationName": "currentUp"
-                        }).removeClass("current").addClass("previous");
-                        $(".next").eq(0).css({
-                            "animationName": "up",
-                            "webkitAnimationName": "up"
-                        }).removeClass("next").addClass("current");
+                        $(".current").css("top", "-100%").removeClass("current").addClass("previous");
+                        $(".next").eq(0).css("top", "0").removeClass("next").addClass("current");
                     }
                     
-                }   
+                } else {
+                    $(".current").css("top", "0");
+                }
             }, false);
         }
         
