@@ -49,6 +49,10 @@
         .next {
             top: 100%;
         }
+        .transition {
+            transition: top .3s;
+            -webkit-transition: top .3s;
+        }
 
         @keyframes up {
             0% {
@@ -216,17 +220,14 @@
                 var touch = event.targetTouches[0];
                 endX = touch.pageX - startX;
                 endY = touch.pageY - startY;
-
+                $("section").removeClass("transition");
                 $(".previous").eq($(".previous").length - 1).css("top", - height + endY + "px");
                 $(".current").css("top", endY + "px");
                 $(".next").eq(0).css("top", height + endY + "px");
 
             }, false);
             section[i].addEventListener("touchend", function(event) {
-                $("secion").css({
-                    "transition": "top .3s",
-                    "webkitTransition": "top .3s"
-                });
+                $("secion").addClass("transition");
                 if (endY > 50) {
                     if($(".previous").length > 0) {
                         $(".next").eq(0).css("top", height + "px");
