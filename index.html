@@ -195,14 +195,10 @@
                 
                 if (endY > 50) {
                     $(".current").css("animationName", "currentDown").removeClass("current").addClass("next");
-                    $(".current").css("webkitAnimationName", "currentDown").removeClass("current").addClass("next");
                     $(".previous").eq($(".previous").length - 1).css("animationName", "down").removeClass("previous").addClass("current");
-                    $(".previous").eq($(".previous").length - 1).css("webkitAnimationName", "down").removeClass("previous").addClass("current");
                 } else if(endY < -50) {
                     $(".current").css("animationName", "currentUp").removeClass("current").addClass("previous");
-                    $(".current").css("webkitAnimationName", "currentUp").removeClass("current").addClass("previous");
                     $(".next").eq(0).css("animationName", "up").removeClass("next").addClass("current");
-                    $(".next").eq(0).css("webkitAnimationName", "up").removeClass("next").addClass("current");
                 }   
             }, false);
         }
