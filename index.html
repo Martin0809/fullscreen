@@ -22,8 +22,6 @@
             top: 0;
             width: 100%;
             height: 100%;
-            transition: top .3s linear;
-            -webkit-transition: top .3s linear;
             animation: .3s;
             -webkit-animation: .3s;
         }
@@ -225,7 +223,7 @@
 
             }, false);
             section[i].addEventListener("touchend", function(event) {
-                
+                $("secion").css("transition", ".3s linear");
                 if (endY > 50) {
                     if($(".previous").length > 0) {
                         $(".next").eq(0).css("top", height + "px");
