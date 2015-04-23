@@ -57,7 +57,23 @@
                 top: 0;
             }
         }
-         @keyframes currentUp {
+        @-webkit-keyframes up {
+            0% {
+                top: 100%;
+            }
+            100% {
+                top: 0;
+            }
+        }
+        @keyframes currentUp {
+            0% {
+                top: 0;
+            }
+            100% {
+                top: -100%;
+            }
+        }
+        @-webkit-keyframes currentUp {
             0% {
                 top: 0;
             }
@@ -73,6 +89,14 @@
                 top: 0;
             }
         }
+        @-webkit-keyframes down {
+            0% {
+                top: -100%;
+            }
+            100% {
+                top: 0;
+            }
+        }
         @keyframes currentDown {
             0% {
                 top: 0;
@@ -81,17 +105,14 @@
                 top: 100%;
             }
         }
-        li{list-style:none;}
- 
-        .m-slider{width:600px;margin:50px 20px;overflow:hidden;}
-        .m-slider .cnt{position:relative;left:0;width:3000px;}
-        .m-slider .cnt li{float:left;width:600px;}
-        .m-slider .cnt img{display:block;width:100%;height:450px;}
-        .m-slider .cnt p{margin:20px 0;}
-        .m-slider .icons{text-align:center;color:#000;}
-        .m-slider .icons span{margin:0 5px;}
-        .m-slider .icons .curr{color:red;}
-        .f-anim{-webkit-transition:left .2s linear;}
+        @-webkit-keyframes currentDown {
+            0% {
+                top: 0;
+            }
+            100% {
+                top: 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -174,10 +195,14 @@
                 
                 if (endY > 50) {
                     $(".current").css("animationName", "currentDown").removeClass("current").addClass("next");
+                    $(".current").css("webkitAnimationName", "currentDown").removeClass("current").addClass("next");
                     $(".previous").eq($(".previous").length - 1).css("animationName", "down").removeClass("previous").addClass("current");
+                    $(".previous").eq($(".previous").length - 1).css("webkitAnimationName", "down").removeClass("previous").addClass("current");
                 } else if(endY < -50) {
                     $(".current").css("animationName", "currentUp").removeClass("current").addClass("previous");
+                    $(".current").css("webkitAnimationName", "currentUp").removeClass("current").addClass("previous");
                     $(".next").eq(0).css("animationName", "up").removeClass("next").addClass("current");
+                    $(".next").eq(0).css("webkitAnimationName", "up").removeClass("next").addClass("current");
                 }   
             }, false);
         }
