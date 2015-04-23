@@ -136,7 +136,7 @@
 
         //触屏事件
         var sectionEvent = {
-            section: $("section"),
+            section: $("section").eq(1),
             events: {
                 handleEvent: function(e) {
                     if(e.type == "touchstart") this.start(e);
