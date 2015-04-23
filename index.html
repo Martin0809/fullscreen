@@ -136,6 +136,7 @@
 
         //触屏事件
         var sectionEvent = {
+            touch: ('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch,
             section: $("section").eq(1),
             events: {
                 section: this.section;
