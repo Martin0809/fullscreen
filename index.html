@@ -142,7 +142,7 @@
                 section: this.section;
                 handleEvent: function(event) {
                     var self = this;
-                    if(event.type == "touchtart") self.start(event);
+                    if(event.type == "touchstart") self.start(event);
                     else if(event.type == "touchmove") self.move(event);
                     else if(event.type == "touchend") self.end(event);
                 },
