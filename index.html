@@ -156,7 +156,7 @@
         //触屏事件
         section.addEventListener("touchstart", function(event) {
             event.preventDefault();
-            var touch = event.touches[0];
+            var touch = event.targetTouches[0];
             startX = touch.pageX;
             startY = touch.pageY;
             startTime = +new Date;
@@ -164,8 +164,8 @@
         }, false);
         section.addEventListener("touchmove", function(event) {
             event.preventDefault();
-            if (event.touches.length > 1 || event.scale && event.scale !== 1) return;
-            var touch = touches[0];
+            if (event.targetTouches.length > 1 || event.scale && event.scale !== 1) return;
+            var touch = targetTouches[0];
             endX = touch.pageX - startX;
             endY = touch.pageY - startY;
         }, false);
