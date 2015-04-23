@@ -174,12 +174,10 @@
             if (endY > 50) {
                 $(".current").css("animationName", "currentDown").removeClass("current").addClass("next");
                 $(".previous").eq($(".previous").length - 1).css("animationName", "down").removeClass("previous").addClass("current");
-                $(".current").css("animationName", "currentUp").removeClass("current").addClass("previous");
-                $(".next").eq(0).css("animationName", "up").removeClass("next").addClass("current");
             } else if(endY < -50) {
                 $(".current").css("animationName", "currentUp").removeClass("current").addClass("previous");
                 $(".next").eq(0).css("animationName", "up").removeClass("next").addClass("current");
-                
+            }   
         }, false);
         
     </script>
