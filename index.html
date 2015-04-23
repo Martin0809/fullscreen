@@ -140,16 +140,16 @@
             section: $("section").eq(1),
             events: {
                 section: this.section;
-                handleEvent: function(e) {
+                handleEvent: function(event) {
                     var self = this;
-                    if(e.type == "touchtart") this.start(e);
-                    else if(e.type == "touchmove") this.move(e);
-                    else if(e.type == "touchend") this.end(e);
+                    if(event.type == "touchtart") self.start(event);
+                    else if(event.type == "touchmove") self.move(event);
+                    else if(event.type == "touchend") self.end(event);
                 },
                 //滑动开始
-                start: function(e) {
-                    e.preventDefault();
-                    var touch = e.touches[0];
+                start: function(event) {
+                    event.preventDefault();
+                    var touch = event.touches[0];
                     startPos = {
                         x: touch.pageX,
                         y: touch.pageY,
@@ -161,11 +161,11 @@
                 },
 
                 //移动
-                move: function(e) {
+                move: function(event) {
                     event.preventDefault();
                     //当屏幕有多个touch或者页面缩放时，不执行操作
-                    if(e.touches.length > 1 || e.scale && e.scale !== 1) return;
-                    var touch = e.touches[0];
+                    if(event.touches.length > 1 || event.scale && event.scale !== 1) return;
+                    var touch = event.touches[0];
                     endPos: {
                         x: touch.pageX - startPos.X,
                         y: touch.pageY - startPos.y
@@ -173,12 +173,12 @@
                 },
             },
 
-            innt: function() {
+            init: function() {
                 var self = this;
                 if(!!self.touch) self.section.addEventListener("touchstart", self.events, false);
             }
         };
-        sectionEvent.innt();
+        sectionEvent.init();
     </script>
 </body>
 </html>
