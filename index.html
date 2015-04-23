@@ -168,8 +168,8 @@
                         time: +new Date
                     }
                     //绑定事件
-                    section.addEventListener("touchmove", this, false);
-                    section.addEventListener("touchend", this, false);
+                    section.addEventListener("touchmove", self.move(event), false);
+                    section.addEventListener("touchend", self.end(event), false);
                 },
 
                 //移动
